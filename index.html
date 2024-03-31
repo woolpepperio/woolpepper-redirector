@@ -43,8 +43,9 @@
 
     // Example usage
     var url = getUrlParameter("url");
-    if (url != null) {
-      window.location = url;
+    console.log(url);
+    if (url !== "") {
+      window.location.href = url;
     }
   </script>
   <body>
