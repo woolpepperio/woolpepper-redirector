@@ -32,20 +32,19 @@
     }
   </style>
   <script>
-    function getUrlParameter(name) {
+    function getUrlParameter(name, loc) {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
       var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-      var results = regex.exec(location.search);
+      var results = regex.exec(loc);
       return results === null
         ? ""
         : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
     // Example usage
-    var url = getUrlParameter("url");
-    console.log(url);
-    if (url !== "") {
-      window.location.href = url;
+    var data = getUrlParameter("data", location.search);
+    if (data !== "") {
+      window.location.href = atob(data).split("&")[0].split("=")[1];
     }
   </script>
   <body>
